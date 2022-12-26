@@ -1,0 +1,20 @@
+.container{
+    width: 50%;
+    padding-top: 60px;
+}
+.card{
+    padding: 20px;
+}
+.i{
+    border-color: red;
+}
+.fs-6{
+    font-size: 6px;
+}
+.error{
+    color: red;
+    border-color: red;
+}
+.show{
+    visibility: hidden;
+}

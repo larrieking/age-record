@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Userinput from "./components/Userinput";
+import {ChakraProvider} from "@chakra-ui/react";
+import {useState} from "react";
+import ItemList from "./components/ItemList";
+import styles from './components/Userinput.module.css'
 
 function App() {
+ const [item, setItem] = useState([])
+
+  const addItemHandler = (enterdText) => {
+    setItem((prevItem) => {
+     const updatedItem = [...prevItem]
+     updatedItem.unshift({email: enterdText.email, amount: enterdText.amount, id: Math.random().toString()})
+     return updatedItem
+
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<div>
+    <Userinput onAdd={addItemHandler}> </Userinput>
+    <div className={`container ${styles.container} ${item.length < 1 && styles.show}`}>
+        <ItemList items = {item}></ItemList>
     </div>
+
+
+</div>
+
+
+
   );
 }
 

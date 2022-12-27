@@ -1,9 +1,12 @@
 import {useState} from "react";
 import classes from "./Userinput.module.css";
+import {useToast} from "@chakra-ui/react";
+
 
 function Userinput(props) {
  const [email, setEmail] = useState({state:'', error :false});
  const [amount, setAmount] = useState({state:'', error :false});
+    const toast = useToast()
 
  const submitHandler = (event) => {
      let errorState = false
@@ -26,6 +29,13 @@ function Userinput(props) {
      props.onAdd(submittedForm)
      setEmail({error: false, state: ''} )
      setAmount({error: false, state: ''} )
+     toast({
+         title: 'Account created.',
+         description: "We've created your account for you.",
+         status: 'success',
+         duration: 9000,
+         isClosable: true,
+     })
 
 
 }

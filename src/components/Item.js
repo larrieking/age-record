@@ -1,8 +1,11 @@
 function Item(props) {
+    const deleteHandler = (event) => {
+      props.onClick(props.id)
+    }
 
     return(
 
-            <tr>
+            <tr onClick={deleteHandler}>
                 <td>{props.id}</td>
                 <td>{props.email}</td>
                 <td>{props.amount}</td>

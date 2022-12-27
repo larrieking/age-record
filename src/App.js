@@ -15,15 +15,25 @@ function App() {
 
     })
   }
+
+  const deleteHandler = (id) => {
+    setItem((prevState)=>{
+        const updatedItem = [...prevState]
+        return updatedItem.filter(x => x.id != id)
+    })
+  }
   return (
-<div>
-    <Userinput onAdd={addItemHandler}> </Userinput>
-    <div className={`container ${styles.container} ${item.length < 1 && styles.show}`}>
-        <ItemList items = {item}></ItemList>
-    </div>
+ <ChakraProvider>
+     <div>
+         <Userinput onAdd={addItemHandler}> </Userinput>
+         <div className={`${item.length < 1 && styles.show}`}>
+             <ItemList items = {item}  onDeleteItem={deleteHandler}></ItemList>
+         </div>
 
 
-</div>
+     </div>
+ </ChakraProvider>
+
 
 
 

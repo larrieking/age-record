@@ -1,10 +1,12 @@
 import Item from "./Item";
+import styles from './Userinput.module.css'
 
 function ItemList(props) {
 
 
+
     return(
-        <table className="table">
+        <table className={`table ${styles.container} container`}>
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -16,7 +18,7 @@ function ItemList(props) {
             <tbody>
             {console.log(props.items)}
             {props.items.map((item)=>
-                <Item key={item.id} id = {item.id} email = {item.email} amount = {item.amount}></Item>
+                <Item key={item.id} id = {item.id} email = {item.email} amount = {item.amount} onClick={props.onDeleteItem}></Item>
             )}
 
             </tbody>
